@@ -40,6 +40,7 @@ struct HighSchoolAdditionalInfoView: View {
                 HStack {
                     Image(systemName: "xmark")
                         .bold()
+                        .foregroundStyle(Color.black)
                     Spacer()
                 }.padding(20)
                     .onTapGesture {
@@ -49,6 +50,8 @@ struct HighSchoolAdditionalInfoView: View {
                 Text(highSchool.schoolName)
                     .font(.title2)
                     .bold()
+                    .foregroundStyle(Color.black)
+                    .padding(.all, 10)
                 Spacer()
                     RoundedRectangle(cornerRadius: 15)
                         .foregroundStyle(Color.darkBlue)
@@ -82,7 +85,8 @@ struct HighSchoolAdditionalInfoView: View {
                     Spacer()
                 }
             
-        }.onAppear() {
+        }.preferredColorScheme(.light)
+        .onAppear() {
             if !viewModel.schoolHasResults(school: highSchoolResult) {
                 showNoResults = true
             }
@@ -91,5 +95,5 @@ struct HighSchoolAdditionalInfoView: View {
 }
 
 #Preview {
-    HighSchoolAdditionalInfoView(highSchool: HighSchool(id: "", schoolName: "NYC High School"), highSchoolResult: HighSchoolSATResults(id: "some id ", schoolName: "NYC High School", satAvgMathScore: "100", satReadingAvgScore: "200", satWritingAvgScore: "300", numberOfTestTakers: "1000"))
+    HighSchoolAdditionalInfoView(highSchool: HighSchool(id: "", schoolName: "NYC High School TEST NAME TEST TEST TEST TEST"), highSchoolResult: HighSchoolSATResults(id: "some id ", schoolName: "NYC High School", satAvgMathScore: "100", satReadingAvgScore: "200", satWritingAvgScore: "300", numberOfTestTakers: "1000"))
 }

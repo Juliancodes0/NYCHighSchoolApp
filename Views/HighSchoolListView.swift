@@ -74,21 +74,24 @@ struct HighSchoolListView: View {
                         .font(.headline)
                         .bold()
                         .padding(.bottom)
+                        .foregroundStyle(Color.black)
                     
                     TextField("Search...", text: $viewModel.searchText)
-                        .frame(width: 300, height: 10)
+                        .frame(width: 300, height: 5)
                         .padding()
                         .foregroundColor(.black)
                         .background() {
                             RoundedRectangle(cornerRadius: 5)
-                                .foregroundColor(.white)
-                        }
+                                .foregroundColor(.customGray)
+                                .opacity(0.8)
+                        }.shadow(radius: 5)
                     
                     Spacer()
                     listOfHighschools
                 }
             }
-        }.preferredColorScheme(.light)
+        }
+        .preferredColorScheme(.light)
         .onAppear() {
             viewModel.getAllHighSchools()
             viewModel.getAllSATResults()
