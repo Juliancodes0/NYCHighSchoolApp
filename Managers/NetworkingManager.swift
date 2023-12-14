@@ -5,8 +5,8 @@
 //  Created by Julian Burton on 12/13/23.
 
 
-import Foundation
 import Combine
+import Foundation
 
 enum NetworkError: Error {
     case badURL
