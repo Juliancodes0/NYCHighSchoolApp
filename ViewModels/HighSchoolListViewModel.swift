@@ -17,10 +17,10 @@ class HighSchoolListViewModel: ObservableObject {
     func getAllHighSchools() {
         let urlString = "https://data.cityofnewyork.us/resource/s3k6-pzi2.json"
             isLoading = true
-        NetworkManager.shared.request(urlString: urlString) { [weak self] (result: Result<[HighSchool], Error>) in
-            self?.isLoading = false
+        NetworkManager.shared.requestAPIData(urlString: urlString) { [weak self] (result: Result<[HighSchool], Error>) in
             switch result {
             case .success(let highSchools):
+                self?.isLoading = false
                 self?.highSchools = highSchools
             case .failure(let error):
                 print("Error: \(error.localizedDescription)")
@@ -30,7 +30,7 @@ class HighSchoolListViewModel: ObservableObject {
     
     func getAllSATResults () {
         let urlString = "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
-        NetworkManager.shared.request(urlString: urlString) { (result:
+        NetworkManager.shared.requestAPIData(urlString: urlString) { (result:
             Result<[HighSchoolSATResults], Error>) in
             switch result {
             case .success(let results):

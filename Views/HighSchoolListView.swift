@@ -60,6 +60,7 @@ extension HighSchoolListView {
         List {
             ForEach(filteredHighSchoolResults.sorted(by: {$0.schoolName < $1.schoolName}), id: \.id) { highSchool in
                 HighSchoolForListView(highSchool: highSchool, viewModel: viewModel)
+                    
             }
             .listRowSpacing(10)
         }.listStyle(.plain)

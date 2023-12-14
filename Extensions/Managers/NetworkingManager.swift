@@ -16,10 +16,11 @@ enum NetworkError: Error {
 
 class NetworkManager {
     static let shared = NetworkManager()
+    private var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
 
     private init() {}
 
-    func request<T: Decodable>(urlString: String, completion: @escaping (Result<T, Error>) -> Void) {
+      func requestAPIData<T: Decodable>(urlString: String, completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.badURL))
             return
@@ -49,6 +50,4 @@ class NetworkManager {
             }
             .store(in: &cancellables)
     }
-
-    private var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
 }
